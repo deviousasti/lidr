@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29820.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "lidr", "src\lidr.fsproj", "{A0D8BF3F-4CF2-4265-BF02-548CB3F297EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0D8BF3F-4CF2-4265-BF02-548CB3F297EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0D8BF3F-4CF2-4265-BF02-548CB3F297EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0D8BF3F-4CF2-4265-BF02-548CB3F297EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0D8BF3F-4CF2-4265-BF02-548CB3F297EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87048C4F-9C7C-4D0A-9EAA-71A83BB6029E}
+	EndGlobalSection
+EndGlobal
