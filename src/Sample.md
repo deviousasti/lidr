@@ -12,7 +12,7 @@ ultra-low-power 3D accelerometer and 3D magnetometer
 
 * 3 magnetic field channels and 3 acceleration channels
 * ±50 gauss magnetic dynamic range
-* ±2/±4/±8/16 g selectable acceleration fullscales
+* ±2/±4/±8/±16 g selectable acceleration fullscales
 * 16-bit data output
 * SPI / I2C serial interfaces
 * Analog supply voltage 1.71 V to 3.6 V
@@ -34,21 +34,33 @@ ultra-low-power 3D accelerometer and 3D magnetometer
 
 # Configuration
 
-## R:STATUS_REG_AUX_A (07h)
+## STATUS_REG_AUX_A (07h)
 
 	--	TOR	--	--	--	TDA	--	--
 
-TOR: Temperature data overrun
+### TOR
 
-​	0: no overrun has occurred
-​	1: new temperature data has overwritten the previous data 
+Is Temperature data overrun
 
-TDA: Temperature data available 
+### TDA
 
-​	0: new temperature data is not yet available 
-​	1: new temperature data is available)
+Is Temperature data available 
 
-## R:OUT_TEMP_L_A (0Ch), OUT_TEMP_H_A (0Dh)
+## OUT_TEMP_L_A (0Ch), OUT_TEMP_H_A (0Dh)
 
-Temperature sensor 
+Read temperature 
+
+	assert(TDA == 1);
+	(float)((OUT_TEMP / 256.0f) + 25.0);
+
+## TEMP_CFG_REG_A (1Fh)
+
+	TEMP_EN1	TEMP_EN0	0	0	0	0	0	0 
+
+### TEMP_EN[1..0]
+
+Temperature sensor _enable_ ok
+
+`00`: disabled
+`11`: enabled
 

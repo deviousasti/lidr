@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Document.fs" />
+    <Compile Include="FrontMatter.fs" />
+    <Compile Include="Ast.fs" />
+    <Compile Include="Parsers.fs" />
     <None Include="Sample.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

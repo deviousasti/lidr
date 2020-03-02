@@ -1,27 +1,31 @@
 ﻿open System
 open FSharp.Markdown
 open System.IO
-open Legivel.Attributes
+open System.Text.RegularExpressions
+open System.Globalization
+open FSharp.Formatting.Common
+open System.Linq
 
-type Options = {
-    [<YamlField("namespace")>] CodeNamespace: string option
-}
-
-module FrontMatter = 
-    let splitDoc (text: string) (marker: string) = 
-        let index = text.IndexOf(marker, 4)
-        let fstart, fend, docstart = 
-            if index < 0 then 
-                (0, 0, 0) 
-            else 
-                (marker.Length, index - marker.Length, index + marker.Length)
-        text.Substring (fstart, fend), text.Substring(docstart)
 
 [<EntryPoint>]
-let main argv =
+let main argv =    
     
     let text = File.ReadAllText("Sample.md")
     let frontmatter, doc = FrontMatter.splitDoc text "---"
-    let result = Legivel.Serialization.Deserialize<Options> frontmatter 
-    let parsed = Markdown.Parse(doc)
+    
+    let parsed = Markdown.Parse(doc)    
+    
+    //let test p str =
+    //    match run p str with
+    //    | Success(result, _, _)   -> printfn "Success: %A" result
+    //    | Failure(errorMsg, _, _) -> printfn "Failure: %s" errorMsg
+
+    //test pint32 "0Ah"
+    parsed.Paragraphs 
+    |> Seq.iter (function
+                | Heading(2, [Literal(text, _)], range) as hdg -> Parsers.parseRegisters text range |> printfn "%A"
+                //| par -> printfn "%A" par
+                | _ -> ()
+                )
+    
     0 // return an integer exit code
